@@ -2,7 +2,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import EachUtils from "../utils/EachUtils";
+import EachUtils from "../Utils/EachUtils";
+
 const Navbar = ({ page }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,9 +22,9 @@ const Navbar = ({ page }) => {
     <Link
       key={index}
       to={item.to}
-      className={`text-black px-2 py-1 hover:text-blue-500 md:text-xl ${
+      className={`px-2 py-1 hover:text-color-accent md:text-xl ${
         page.toLowerCase() === item.label.toLowerCase()
-          ? "text-blue-500 underline"
+          ? "text-color-accent underline"
           : ""
       }`}
     >
@@ -32,10 +33,13 @@ const Navbar = ({ page }) => {
   );
 
   return (
-    <nav className="bg-white p-4 shadow-md">
+    <nav className=" p-4 shadow-color-secondary shadow-md">
       <div className="container mx-auto  px-4 flex justify-between items-center">
         <Link to="/" className="text-lg font-bold">
-          <h1 className="md:text-3xl text-2xl text-blue-500">QynMovieList</h1>
+          <h1 className="md:text-3xl text-2xl text-blue-500 flex">
+            <p>Qyn</p>
+            <p className="text-color-accent">MovieList</p>
+          </h1>
         </Link>
 
         {/* Tombol toggle untuk mobile */}
@@ -61,7 +65,7 @@ const Navbar = ({ page }) => {
 
         {/* Tautan desktop */}
         <div className="hidden md:flex md:text-xl items-center">
-          <EachUtils of={navLinks} render={renderLink} />
+            <EachUtils of={navLinks} render={renderLink} />
         </div>
       </div>
 
